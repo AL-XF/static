@@ -1,7 +1,7 @@
 pipeline {
     agent any
     options {
-        withAWS(credentials:'aws-static',region:'Oregon') 
+        withAWS(credentials:'aws-static') 
     }
     stages {
         stage('Upload to AWS') {
