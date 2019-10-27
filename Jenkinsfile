@@ -4,9 +4,13 @@ pipeline {
         withAWS(credentials:'aws-static') 
     }
     stages {
+        stage('Lint HTML') {
+            steps {
+                sh 'tidy -q -e *.html'
+            }
+        }
         stage('Upload to AWS') {
             steps {
-                tidy -q -e *.html
                 s3Upload(file:'index.html', bucket:'jenkinsfxudacity', path:'index.html')
             }
         }
